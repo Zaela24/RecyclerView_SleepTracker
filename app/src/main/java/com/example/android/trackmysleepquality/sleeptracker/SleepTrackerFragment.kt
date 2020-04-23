@@ -68,7 +68,7 @@ class SleepTrackerFragment : Fragment() {
         // Using viewLifeCycleOwner makes the observer only work while this fragment is on screen
         sleepTrackerViewModel.nights.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.data = it
+                adapter.submitList(it)
             }
         })
 
