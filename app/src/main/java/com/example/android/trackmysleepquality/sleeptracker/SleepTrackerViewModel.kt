@@ -128,6 +128,21 @@ class SleepTrackerViewModel(
         _navigateToSleepQuality.value = null
     }
 
+    // LiveData to pass with nav on grid elements clicked
+    private val _navigateToSleepDataQuality = MutableLiveData<Long>()
+    val navigateToSleepDataQuality
+        get() = _navigateToSleepDataQuality
+
+    // click listener for grid items
+    fun onSleepNightClicked(id: Long){
+        _navigateToSleepDataQuality.value = id
+    }
+
+    // resets live data after navigating to new fragment
+    fun onSleepDataQualityNavigated() {
+        _navigateToSleepDataQuality.value = null
+    }
+
     init {
         initializeTonight()
     }

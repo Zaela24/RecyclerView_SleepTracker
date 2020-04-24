@@ -28,7 +28,12 @@ class SleepNightAdapter(val clickListener: SleepNightListener) : ListAdapter<Sle
         SleepNightAdapter.ViewHolder>(SleepNightDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position)!!, clickListener)
+        val item = getItem(position)
+        holder.bind(item, clickListener)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder.from(parent)
     }
 
     class ViewHolder private constructor(val binding: ListItemSleepNightBinding) :
@@ -48,10 +53,6 @@ class SleepNightAdapter(val clickListener: SleepNightListener) : ListAdapter<Sle
                 return ViewHolder(binding)
             }
         }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
     }
 }
 
