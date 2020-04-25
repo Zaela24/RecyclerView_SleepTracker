@@ -110,6 +110,13 @@ class SleepTrackerFragment : Fragment() {
 
         // sets up grid view manager for binding
         val manager = GridLayoutManager(activity, 3)
+        manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            // if header take up full span, otherwise square grid block
+            override fun getSpanSize(position: Int) = when (position) {
+                0 -> 3
+                else -> 1
+            }
+        }
         binding.sleepList.layoutManager = manager
 
         val adapter = SleepNightAdapter(SleepNightListener {
@@ -120,7 +127,7 @@ class SleepTrackerFragment : Fragment() {
         // Using viewLifeCycleOwner makes the observer only work while this fragment is on screen
         sleepTrackerViewModel.nights.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.submitList(it)
+                adapter.addHeaderAndSubmitList(it)
             }
         })
 
