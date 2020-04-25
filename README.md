@@ -8,7 +8,7 @@ This app builds on the SleepQualityTracker developed in Lesson 6.  In this versi
 
 ## Zaela's Notes
 
-I attempted to do this as a branch in my SleepTracker repo, but GitHub doesn't count contributions to branches that aren't the master branch, so here we are.
+For this lesson I implemented both list and grid views in RecyclerView and created an adapter class for RecyclerView to contain and draw the viewws. I also implemented a header in the grid version.
 
 ## Screenshots
 
